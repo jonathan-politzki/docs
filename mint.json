@@ -19,6 +19,7 @@
   "modeToggle": {
     "default": "dark"
   },
+  "theme": "quill",
   "topbarLinks": [
     {
       "name": "GitHub",
