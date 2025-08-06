@@ -3,6 +3,232 @@ title: Quickstart
 description: 'Get running in 2 minutes'
 ---
 
+<div style={{marginBottom: '2rem'}}>
+  <button 
+    onClick={() => {
+      const aiInstructions = `# Jean Memory - Complete AI Agent Implementation Guide
+
+## OVERVIEW
+Jean Memory is a universal memory layer for AI applications. It provides persistent, intelligent memory that works across sessions and platforms.
+
+## INSTALLATION INSTRUCTIONS
+
+### FOR REACT APPLICATIONS:
+npm install @jeanmemory/react @assistant-ui/react
+
+Create a new component:
+import { useJeanAgent, JeanChat } from '@jeanmemory/react';
+import { Thread, AssistantRuntimeProvider } from '@assistant-ui/react';
+
+function App() {
+  const { agent, signIn } = useJeanAgent({ 
+    apiKey: process.env.REACT_APP_JEAN_API_KEY || "jean_sk_...",
+    systemPrompt: "You are a helpful assistant with persistent memory."
+  });
+  
+  if (!agent) return <button onClick={signIn}>Sign in with Jean</button>;
+  
+  return (
+    <AssistantRuntimeProvider runtime={agent.runtime}>
+      <Thread />
+    </AssistantRuntimeProvider>
+  );
+}
+
+export default App;
+
+### FOR PYTHON APPLICATIONS:
+pip install jeanmemory
+
+Create a new file:
+from jeanmemory import JeanAgent
+import os
+
+agent = JeanAgent(
+    api_key=os.getenv("JEAN_API_KEY", "jean_sk_..."),
+    system_prompt="You are a helpful assistant with persistent memory.",
+    modality="chat"
+)
+
+# For terminal chat
+agent.run()
+
+# For programmatic use
+response = agent.send_message("Remember that my favorite color is blue")
+print(response)
+
+### FOR NODE.JS APPLICATIONS:
+npm install @jeanmemory/node
+
+Create a new file:
+import { JeanAgent } from '@jeanmemory/node';
+
+const agent = new JeanAgent({
+  apiKey: process.env.JEAN_API_KEY || "jean_sk_...",
+  systemPrompt: "You are a helpful assistant with persistent memory."
+});
+
+// For chat interface
+await agent.run();
+
+// For programmatic use
+const response = await agent.sendMessage("What's my favorite color?");
+console.log(response);
+
+## API KEY SETUP
+1. Go to https://jeanmemory.com/dashboard
+2. Sign up or sign in
+3. Copy your API key (starts with jean_sk_)
+4. Add to environment variables:
+   - For React: Create .env file with REACT_APP_JEAN_API_KEY=jean_sk_...
+   - For Python: Create .env file with JEAN_API_KEY=jean_sk_...
+   - For Node: Create .env file with JEAN_API_KEY=jean_sk_...
+
+## REST API ENDPOINTS
+
+Base URL: https://api.jeanmemory.com
+
+### Add Memory
+POST /memories
+Headers: { "Authorization": "Bearer jean_sk_...", "Content-Type": "application/json" }
+Body: { "messages": [{ "role": "user", "content": "Remember this" }] }
+
+### Search Memory
+GET /memories/search?query=favorite%20color
+Headers: { "Authorization": "Bearer jean_sk_..." }
+
+### Delete Memory
+DELETE /memories/{memory_id}
+Headers: { "Authorization": "Bearer jean_sk_..." }
+
+## MCP INTEGRATION (For Claude Desktop, Cursor, etc.)
+
+### Claude Desktop Setup:
+1. Open Claude Desktop settings
+2. Go to Developer -> Model Context Protocol
+3. Add server:
+   {
+     "jeanmemory": {
+       "command": "npx",
+       "args": ["@jeanmemory/mcp-server"],
+       "env": {
+         "JEAN_API_KEY": "jean_sk_..."
+       }
+     }
+   }
+
+### ChatGPT Setup:
+1. Go to https://jeanmemory.com/dashboard
+2. Click "Connect ChatGPT"
+3. Follow OAuth flow
+
+## TESTING YOUR IMPLEMENTATION
+
+1. First interaction:
+   User: "Remember that my favorite color is blue and I have a dog named Max"
+   AI: "I'll remember that your favorite color is blue and you have a dog named Max."
+
+2. Close and restart the application
+
+3. Second interaction:
+   User: "What do you know about me?"
+   AI: "I know that your favorite color is blue and you have a dog named Max."
+
+## ADVANCED FEATURES
+
+### Custom System Prompts
+agent = JeanAgent(
+    api_key="jean_sk_...",
+    system_prompt="You are a personal tutor who remembers all previous lessons and adapts teaching style based on student progress."
+)
+
+### Memory Categories
+agent.add_memory(
+    content="User prefers visual learning",
+    category="preferences"
+)
+
+### Narrative Generation
+narrative = agent.generate_narrative()
+print(narrative)  # Returns a summary of all user interactions and memories
+
+### Sign in with Jean (OAuth)
+import { SignInWithJean } from '@jeanmemory/react';
+
+function App() {
+  return (
+    <SignInWithJean 
+      onSuccess={(userData) => console.log('Signed in:', userData)}
+      redirectUrl="/dashboard"
+    />
+  );
+}
+
+## COMMON PATTERNS
+
+### Math Tutor Example:
+const mathTutor = new JeanAgent({
+  apiKey: "jean_sk_...",
+  systemPrompt: "You are a patient math tutor who remembers each student's strengths, weaknesses, and learning pace."
+});
+
+### Personal Assistant Example:
+const assistant = new JeanAgent({
+  apiKey: "jean_sk_...",
+  systemPrompt: "You are a personal assistant who remembers user preferences, schedules, and important information."
+});
+
+### Therapist Example:
+const therapist = new JeanAgent({
+  apiKey: "jean_sk_...",
+  systemPrompt: "You are a supportive listener who remembers past conversations and provides continuity in support."
+});
+
+## ENVIRONMENT VARIABLES
+JEAN_API_KEY=jean_sk_...
+JEAN_API_URL=https://api.jeanmemory.com (optional, for custom deployments)
+JEAN_DEBUG=true (optional, for verbose logging)
+
+## TROUBLESHOOTING
+
+1. "API key not found" - Check environment variables are loaded
+2. "Memory not persisting" - Ensure you're using the same user_id across sessions
+3. "Slow responses" - Memory search is optimized for <100ms latency
+
+## SUPPORT
+- Documentation: https://docs.jeanmemory.com
+- GitHub: https://github.com/jean-technologies/jean-memory
+- Email: support@jeanmemory.com
+
+IMPORTANT: Replace "jean_sk_..." with your actual API key from https://jeanmemory.com/dashboard`;
+      
+      navigator.clipboard.writeText(aiInstructions);
+      alert('Instructions copied to clipboard! Paste into any AI coding assistant.');
+    }}
+    style={{
+      backgroundColor: '#1a1a1a',
+      color: '#888',
+      border: '1px solid #333',
+      padding: '12px 24px',
+      borderRadius: '8px',
+      fontSize: '14px',
+      cursor: 'pointer',
+      transition: 'all 0.2s',
+      fontFamily: 'monospace'
+    }}
+    onMouseEnter={(e) => {
+      e.target.style.backgroundColor = '#222';
+      e.target.style.color = '#aaa';
+    }}
+    onMouseLeave={(e) => {
+      e.target.style.backgroundColor = '#1a1a1a';
+      e.target.style.color = '#888';
+    }}
+  >
+    🤖 Hate reading docs? Copy and paste these instructions into any AI agent
+  </button>
+</div>
+
 ## 1. Get Your API Key
 
 Sign up at [jeanmemory.com](https://jeanmemory.com) and grab your API key.
