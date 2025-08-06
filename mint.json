@@ -8,6 +8,9 @@
   },
   "favicon": "/favicon.png",
   "custom": {
+    "css": ["styles.css", "custom.css"]
+  },
+  "custom": {
     "css": ["styles.css"]
   },
   "colors": {
