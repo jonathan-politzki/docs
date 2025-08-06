@@ -7,9 +7,6 @@
     "href": "https://jeanmemory.com"
   },
   "favicon": "/favicon.png",
-  "custom": {
-    "css": ["styles.css", "custom.css"]
-  },
   "colors": {
     "primary": "#9563FF",
     "light": "#7C3AED",
