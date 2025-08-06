@@ -4,9 +4,9 @@ description: 'Get running in 2 minutes'
 ---
 
 <Card>
-  <button 
-    className="nx-button"
-    onClick={() => {
+  <div style={{textAlign: 'center', padding: '1rem'}}>
+    <button 
+      onClick={() => {
       const aiInstructions = `# Jean Memory - Complete AI Agent Implementation Guide
 
 ## THIS IS A COMPLETE IMPLEMENTATION GUIDE FOR AI AGENTS
@@ -210,8 +210,9 @@ IMPORTANT: Replace "jean_sk_..." with your actual API key from https://jeanmemor
       navigator.clipboard.writeText(aiInstructions);
     }}
   >
-    Hate reading docs? Copy AI agent instructions
-  </button>
+    Copy AI Agent Instructions
+    </button>
+  </div>
 </Card>
 
 ## 1. Get Your API Key
