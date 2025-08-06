@@ -3,10 +3,15 @@ title: Quickstart
 description: 'Get running in 2 minutes'
 ---
 
-<div style={{marginBottom: '2rem'}}>
+<Card>
   <button 
+    className="nx-button"
     onClick={() => {
       const aiInstructions = `# Jean Memory - Complete AI Agent Implementation Guide
+
+## THIS IS A COMPLETE IMPLEMENTATION GUIDE FOR AI AGENTS
+## Copy this entire text block and paste it into Claude, ChatGPT, Cursor, or any AI coding assistant
+## The AI will then be able to implement Jean Memory in your application automatically
 
 ## OVERVIEW
 Jean Memory is a universal memory layer for AI applications. It provides persistent, intelligent memory that works across sessions and platforms.
@@ -203,31 +208,11 @@ JEAN_DEBUG=true (optional, for verbose logging)
 IMPORTANT: Replace "jean_sk_..." with your actual API key from https://jeanmemory.com/dashboard`;
       
       navigator.clipboard.writeText(aiInstructions);
-      alert('Instructions copied to clipboard! Paste into any AI coding assistant.');
-    }}
-    style={{
-      backgroundColor: '#1a1a1a',
-      color: '#888',
-      border: '1px solid #333',
-      padding: '12px 24px',
-      borderRadius: '8px',
-      fontSize: '14px',
-      cursor: 'pointer',
-      transition: 'all 0.2s',
-      fontFamily: 'monospace'
-    }}
-    onMouseEnter={(e) => {
-      e.target.style.backgroundColor = '#222';
-      e.target.style.color = '#aaa';
-    }}
-    onMouseLeave={(e) => {
-      e.target.style.backgroundColor = '#1a1a1a';
-      e.target.style.color = '#888';
     }}
   >
-    🤖 Hate reading docs? Copy and paste these instructions into any AI agent
+    Hate reading docs? Copy AI agent instructions
   </button>
-</div>
+</Card>
 
 ## 1. Get Your API Key
 
