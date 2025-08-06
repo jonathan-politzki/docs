@@ -28,8 +28,8 @@
     }
   ],
   "topbarCtaButton": {
-    "name": "Get Started",
-    "url": "https://jeanmemory.com"
+    "name": "Dashboard",
+    "url": "https://jeanmemory.com/dashboard"
   },
   "navigation": [
     {
@@ -66,6 +66,6 @@
   ],
   "footerSocials": {
     "github": "https://github.com/jean-technologies",
-    "twitter": "https://x.com/jeanmemory"
+    "twitter": "https://x.com/jean_memory"
   }
 }
